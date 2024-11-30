@@ -1,0 +1,156 @@
+:root {
+    --duration: 1.5s;
+    --container-size: 250px;
+    --box-size: 33px;
+    --box-border-radius: 15%;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 16, 16, 1);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: var(--container-size);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.📦 {
+    width: var(--box-size);
+    height: var(--box-size);
+    position: relative;
+    display: block;
+    transform-origin: -50% center;
+    border-radius: var(--box-border-radius);
+}
+
+.📦:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(251, 210, 5, 1);
+    border-radius: var(--box-border-radius);
+    box-shadow: 0px 0px 10px 0px rgb(215, 93, 32);
+}
+
+/* Animaciones específicas para cada elemento */
+.📦:nth-child(1) {
+    animation: slide var(--duration) ease-in-out infinite alternate;
+}
+.📦:nth-child(1):after {
+    animation: color-change var(--duration) ease-in-out infinite alternate;
+}
+
+.📦:nth-child(2) {
+    animation: flip-1 var(--duration) ease-in-out infinite alternate;
+}
+.📦:nth-child(2):after {
+    animation: squidge-1 var(--duration) ease-in-out infinite alternate;
+    background-color: rgba(251, 210, 5, 1);
+}
+
+.📦:nth-child(3) {
+    animation: flip-2 var(--duration) ease-in-out infinite alternate;
+}
+.📦:nth-child(3):after {
+    animation: squidge-2 var(--duration) ease-in-out infinite alternate;
+    background-color: rgba(233, 111, 4, 1);
+}
+
+.📦:nth-child(4) {
+    animation: flip-3 var(--duration) ease-in-out infinite alternate;
+}
+.📦:nth-child(4):after {
+    animation: squidge-3 var(--duration) ease-in-out infinite alternate;
+    background-color: rgb(249, 105, 3);
+}
+
+.📦:nth-child(5) {
+    animation: flip-4 var(--duration) ease-in-out infinite alternate;
+}
+.📦:nth-child(5):after {
+    animation: squidge-4 var(--duration) ease-in-out infinite alternate;
+    background-color: rgba(235, 67, 53, 1);
+}
+
+/* Animaciones */
+@keyframes slide {
+    0% {
+        background-color: rgba(251, 210, 5, 1);
+        transform: translatex(0vw);
+    }
+    100% {
+        background-color: rgba(235, 67, 53, 1);
+        transform: translatex(calc(var(--container-size) - (var(--box-size) * 1.25)));
+    }
+}
+
+@keyframes color-change {
+    0% { background-color: rgba(251, 210, 5, 1); }
+    100% { background-color: rgba(235, 67, 53, 1); }
+}
+
+@keyframes flip-1 {
+    0%, 15% { transform: rotate(0); }
+    35%, 100% { transform: rotate(-180deg); }
+}
+
+@keyframes flip-2 {
+    0%, 30% { transform: rotate(0); }
+    50%, 100% { transform: rotate(-180deg); }
+}
+
+@keyframes flip-3 {
+    0%, 45% { transform: rotate(0); }
+    65%, 100% { transform: rotate(-180deg); }
+}
+
+@keyframes flip-4 {
+    0%, 60% { transform: rotate(0); }
+    80%, 100% { transform: rotate(-180deg); }
+}
+
+@keyframes squidge-1 {
+    5% { transform-origin: center bottom; transform: scalex(1) scaley(1); }
+    15% { transform-origin: center bottom; transform: scalex(1.3) scaley(0.7); }
+    25%, 30% { transform-origin: center bottom; transform: scalex(0.8) scaley(1.4); }
+    70%, 100% { transform-origin: center top; transform: scalex(1) scaley(1); }
+    50% { transform-origin: center top; transform: scalex(1.3) scaley(0.7); }
+}
+
+.container_carga {
+    animation: fadeOut 10s ease forwards; /* Aplicar animación fadeOut */
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /* Totalmente visible */
+    }
+    100% {
+        opacity: 0; /* Desaparece */
+    }
+}
+
+
+/* Repite para cada elemento (squidge-2, squidge-3, etc.) */
+img{
+    width: 364px; /* Ajusta el ancho */
+    height: 53px; /* Ajusta la altura */
+    position: absolute; /* Para colocarla sin afectar otros elementos */
+    bottom: 35%; /* Pega la imagen al fondo del contenedor */
+    left: 58.5%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Corrige la posición para centrarla */
+}
